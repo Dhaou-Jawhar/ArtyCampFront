@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <title>Login</title>
+    <link rel="icon" type="image/png" href="{{ asset('artycmp.png') }}" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href={{ asset('home.css')  }}>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href={{ asset('login.css')  }}>
+
+</head>
+<body style="background-color: #905E96;">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Artycamp</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href={{ path('app_home') }}>Home</a></li>
+        </ul>
+    </div>
+</nav>
+{{ form_start(loginform) }}
+<center>
+<div class="form-group">
+
+    {{ form_label(loginform.mail) }}
+    <div class="error">
+        {{ form_errors(loginform.mail) }}
+    </div>
+    {{ form_widget(loginform.mail) }}
+</div>
+<div class="form-group">
+    {{ form_label(loginform.password) }}
+    <div class="error">
+        {{ form_errors(loginform.password) }}
+    </div>
+    {{ form_widget(loginform.password) }}
+</div>
+<button class="switch__button button switch-btn">{{ button_label|default('Sign In') }}</button>
+</center>
+{{ form_end(loginform) }}
+
+
+
+</body>

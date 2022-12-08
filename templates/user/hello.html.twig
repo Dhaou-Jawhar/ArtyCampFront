@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="stylesheet" href={{ asset('home.css')  }}>
+    <link rel="icon" type="image/png" href="{{ asset('artycmp.png') }}" />
+
+
+    <<title>{% block title %}ArtyCamp Home{% endblock %}</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="{{asset('assets/img/favicon.png')}}" rel="icon">
+    <link href="{{asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    {% block css %}
+        <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/vendor/aos/aos.css')}}" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="{{asset('assets/css/main.css')}}" rel="stylesheet">
+    {% endblock %}
+    <!-- =======================================================
+    * Template Name: PhotoFolio - v1.1.1
+    * Template URL: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+        <a href="index.html" class="logo d-flex align-items-center  me-auto me-lg-0">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <img src={{asset('uploads/users/'  ~ app.user.getImage() ) }} width="16%">
+            <h1> ArtyCamp </h1>
+
+        </a>
+
+
+
+
+
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+    <nav id="navbar" class="navbar">
+<ul class="ml-auto mb-2 mb-sm-0">
+
+
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_home1') }}"><strong>COMPTE</strong></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link "href="/event/accEv"><strong>EVENNEMNTS</strong></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link "href="/add"><strong>RECLAMATION</strong></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link "href="/addm"><strong>MESSAGERIE</strong></a>
+        </li>
+
+
+        <li class="nav-item ">
+            <a class="nav-link"href="{{ path('app_logout') }}"><strong>DECONNECTER</strong></a>
+        </li>
+
+
+    </ul>
+
+    </nav><!-- .navbar -->
+</header><!-- End Header -->
+<div>
+    <img src="{{asset('5.jpg')}}"height="500" width="500">
+    <img src="{{asset('1.jpg')}}"height="500" width="500">
+    <img src="{{asset('2.jpg')}}"height="500" width="500">
+    <img src="{{asset('nature.jpg')}}"height="500" width="500">
+    <img src="{{asset('night.jpg')}}"height="500" width="500">
+    <img src="{{asset('nasa.jpg')}}"height="500" width="500">
+
+
+
+</div>
+<div>
+    <img src="{{asset('face.jpg')}}"height="500" width="500">
+    <img src="{{asset('girl.jpg')}}"height="500" width="500">
+    <img src="{{asset('jsp.jpg')}}"height="500" width="500">
+    <img src="{{asset('3.jpg')}}"height="500" width="500">
+    <img src="{{asset('6.jpg')}}"height="500" width="500">
+    <img src="{{asset('im.jpg')}}"height="500" width="500">
+
+
+</div>

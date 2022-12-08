@@ -1,0 +1,76 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Event index{% endblock %}
+
+{% block body %}
+<div class="main-panel">
+
+    <h1 style="color:#542167";><Strong><i>Liste des Evenements</i></Strong></h1>
+    <h4 style="color:#542167";>Le nombre des Evenements est : {{ events|length }}  </h4>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-24">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Liste Des Evenements</h4>
+                            <p class="card-category">Ajoutez un nouveau Event</p>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table class="table table-hover" id="t">
+                                <thead class="text-warning">
+                                <tr>
+                                    <th style="color:#AA74BE";><b>Nom Event</b></th>
+                                    <th style="color:#AA74BE";><b>Description</b></th>
+                                    <th style="color:#AA74BE";><b>Date Debut</b></th>
+                                    <th style="color:#AA74BE";><b>Date Fin</b></th>
+                                    <th style="color:#AA74BE";><b>Actions</b></th>
+                                </tr>
+                                </thead>
+                                <tbody id="myTable">
+                                {% for event in events %}
+                                    <tr>
+                                        <td>{{ event.nomev }}</td>
+                                        <td>{{ event.description }}</td>
+                                        <td>{{ event.datedeb }}</td>
+                                        <td>{{ event.datefin }}</td>
+                                        <td>
+                                            <a href="{{ path('app_event_show', {'id': event.id}) }}">show</a>
+                                            <a href="{{ path('app_event_edit', {'id': event.id}) }}">edit</a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="6">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <a class="btn btn-primary" href="{{ path('app_event_new') }}">Create new</a>
+            </div>
+        </div>
+    <h4 style="display:inline-block; background-color:#542167; color:black; float:left; padding:8px 16px;
+    text-decoration:none; transition:background-color .3s; border-radius:5px;" > {{ knp_pagination_render(events) }}</h4>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                </table>
+            </div>
+        </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+{% endblock %}

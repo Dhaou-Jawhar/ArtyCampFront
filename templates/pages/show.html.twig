@@ -1,0 +1,35 @@
+
+
+{% extends 'layouts/base.html.twig' %}
+{% block body %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <Article class="article bg-white rounded shadow" >
+               <div class="mw-100 rounded-top overflow-hidden">
+                <img src="{{ (article.imageH ? vich_uploader_asset(article) :asset('images/download.jpg')) | imagine_filter('squared_thumbnail_medium') }}" alt="{{ article.nomA }}" class="w-100 rounded-top"/>
+               </div>
+
+                <h2 class="h5 pl-3 pt-3"><a href="{{ path('app_articles_show',{idArticle: article.idArticle}) }}" class="text-secondary text-decoration-none">{{ article.nomA }}</a></h2>
+                <p class="pl-3 pb-3 text-muted"> <small>Soumis {{ article.createdAt|ago }} par {{ article.user.fulName}}</small></p>
+                <p class="pl-3 pb-3 pr-3 text-break">{{ article.descriptionA }}</p>
+
+                <div class="pl-3  pb-3" >
+                    <a href=" {{ path('app_articles_modif',{idArticle: article.idArticle}) }} " class="btn btn-light">Modifier</a>
+
+                    <a href="#" onclick="event.preventDefault();confirm('Êtes-vous sûr de vouloir supprimer?')&& document.getElementById('js-article-supprimer-form').submit();"  class="btn btn-light">Supprimer</a>
+
+                    <form id="js-article-supprimer-form" action="{{ path('app_articles_supp',{idArticle: article.idArticle}) }}" method="post" style="display: none;">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token('article_suppression_'~ article.idArticle) }}">
+                        <input type="hidden" name="_method" value="DELETE">
+                    </form>
+                </div>
+            </Article>
+
+
+        </div>
+    </div>
+
+{% endblock %}

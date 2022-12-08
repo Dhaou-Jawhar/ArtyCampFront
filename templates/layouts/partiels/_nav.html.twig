@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light mb-4" aria-label="Third navbar example">
+    <div class="container ">
+
+       <a class="navbar-brand" ><mark><strong>ArtyCamp</strong></mark></a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+       </button>
+
+       <div class="collapse navbar-collapse " id="navbarsExample03">
+           <ul class="navbar-nav  mb-2 mb-sm-0">
+               {% if app.user %}
+               <li class="nav-item">
+                   <a class="nav-link" href="/userhello"><strong>HOME</strong></a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="{{ path('app_home1') }}"><strong>PORTFOLIO</strong></a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="{{ path('app_articles_create') }}"><strong>NOUVEL ARTICLE</strong></a>
+               </li>
+
+               <li class="nav-item ">
+                   <a class="nav-link" href="{{ path('app_user_edit', {'id': app.user.getId()}) }}" class="active"><strong>PARAMETRE</strong></a>
+               </li>
+               <li class="nav-item ">
+                   <a class="nav-link"href="{{ path('app_logout') }}"><strong>DECONNECTER</strong></a>
+               </li>
+                {% endif %}
+
+
+           </ul>
+
+                    <form role="search " action="/recherche" method="post">
+                    <input  name="searche" class="form-control mr-5" type="search" placeholder="Rechercher" aria-label="Search" >
+                    </form>
+
+       </div>
+    </div>
+   </div>
+
+
+
+</nav>

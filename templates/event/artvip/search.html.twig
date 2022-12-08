@@ -1,0 +1,24 @@
+{% extends 'baseSearch.html.twig' %}
+
+{% block body %}
+    {{form_start(f)}}
+<table class="table table-sm table-dark" style="border:1px solid black;margin-left:auto;margin-right:auto;">
+    <tr>
+        <th>artID</th>
+        <th>art_nom</th>
+        <th>art_description</th>
+        <th>reference</th>
+    </tr>
+    {% for i in liste %}
+        <tr>
+            <td>{{i.artID}}</td>
+            <td>{{i.artnom}}</td>
+            <td>{{i.artdescription}}</td>
+            <td>{{i.reference}}</td>
+        </tr>
+    {%endfor%}
+</table>
+    {{form_end(f)}}
+{% endblock %}
+
+

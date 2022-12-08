@@ -1,0 +1,60 @@
+
+{% extends 'layouts/base.html.twig' %}
+
+{% block body %}
+    {% if arts|length >0 %}
+<h1> Tunisia  &hearts;</h1>
+<p>It's currently {{ 'now'|date('h:i A','Africa/Tunis') }}</p>
+
+<h1 class="mt-4 mb-5 text-center text-muted">{{ pluralize(arts|length,'Article')}} </h1>
+
+<body   id="myTable">
+
+        {% for row in arts|batch(3) %}
+
+            <div class="row mb-5">
+
+                {% for i in row %}
+                    <div class="col-md-4">
+                        <table id="t">
+                        <Article class="article bg-white rounded shadow" >
+                         <div class="mw-100 overflow-hidden">
+                            <a href="{{ path('app_articles_show',{idArticle: i.idArticle}) }}">
+                                <div class="animation-transition-slow">
+                                    <img  src="{{ (i.imageH ? vich_uploader_asset(i) :asset('images/download.jpg')) | imagine_filter('squared_thumbnail_medium') }}" alt="{{ i.nomA }}" class="w-100 rounded-top  "/>
+
+                                </div>
+
+
+                            </a>
+
+                            <h2 class="h5 pl-3 pt-3"><a href="{{ path('app_articles_show',{idArticle: i.idArticle}) }}" class="text-secondary text-decoration-none">{{ i.nomA }}</a></h2>
+
+                            <p class="pl-3 pb-3 text-muted"> <small>Créer par {{ i.user.fulName}}</small></p>
+                         </div>
+                        </Article>
+                        </table>
+                    </div>
+                {% endfor %}
+             </div>
+        {% endfor %}
+        {% else %}
+<p class=" mt-5 h1  text-center">Pas encore d'articles. <a href="{{ path('app_articles_create') }}" >Soyez le premier!</a></p>
+{% endif %}
+
+</body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+{% endblock %}
+

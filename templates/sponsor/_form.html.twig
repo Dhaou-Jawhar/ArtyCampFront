@@ -1,0 +1,27 @@
+{{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+
+<table>
+    <tr>
+        <td> {{ form_label(form.phoneSociete,"Phone Societe") }}</td>
+        <td> {{ form_widget(form.phoneSociete) }} </td>
+        <td> {{ form_errors(form.phoneSociete) }} </td>
+    </tr>
+    <tr>
+        <td> {{ form_label(form.montant,"Montant") }}</td>
+        <td> {{ form_widget(form.montant) }} </td>
+        <td> {{ form_errors(form.montant) }} </td>
+    </tr>
+    <tr>
+        <td> {{ form_label(form.nomSociete,"Nom Societe") }}</td>
+        <td> {{ form_widget(form.nomSociete) }} </td>
+        <td> {{ form_errors(form.nomSociete) }} </td>
+    </tr>
+    <tr>
+        <td> {{ form_label(form.emailSociete,"Email Societe") }}</td>
+        <td> {{ form_widget(form.emailSociete) }} </td>
+        <td> {{ form_errors(form.emailSociete) }} </td>
+    </tr>
+
+</table>
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

@@ -1,0 +1,14 @@
+
+<title>Edit User</title>
+<link rel="icon" type="image/png" href="{{ asset('artycmp.png') }}" />
+
+{% block body %}
+
+
+    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+
+
+    {{ include('user/_delete_form.html.twig') }}
+{% endblock %}
